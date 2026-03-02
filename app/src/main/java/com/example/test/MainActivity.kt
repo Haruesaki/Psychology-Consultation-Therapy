@@ -7,7 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,7 +46,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = "Selamat ulang tahun $name!",
         modifier = modifier
     )
 }
@@ -48,23 +55,45 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     TestTheme {
-        Greeting("Android")
+        Greeting("Doni")
     }
 }
 
 @Composable
-fun Greeting() {
-
-    val food = PsikologSource.dummyFood[0]   // ambil 1 data dari index ke-0
-
-    Column(modifier = Modifier. fillMaxSize().padding(24.dp)){
-        Text(text = "Nama: ${food.nama}")
-        Text(text = "Deskripsi: ${food.deskripsi}")
-        Text(text = "Harga: Rp ${food.harga}")
+fun PsikologItem(psikolog: Psikolog){
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
         Image(
-            painter = painterResource(id = food.imageRes),
-            contentDescription = "Gambar ${food.nama}",
-            modifier = Modifier.padding(top = 8.dp) // Opsional: memberi jarak dengan teks di atasnya
+            painter = painterResource(id = psikolog.imageRes),
+            contentDescription = "",
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .padding(top = 8.dp)
         )
+        HorizontalDivider(modifier = Modifier.padding(top = 16.dp))
+        Text(text = "Nama: ${psikolog.nama}", style = MaterialTheme.typography.bodyLarge)
+        Text(text = "Deskripsi ${psikolog.deskripsi}")
+        Text(text = "Harga: ${psikolog.harga}")
+
+    }
+}
+
+
+@Composable
+fun Greeting() {
+    val profil = PsikologSource.dataDiri
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(profil){psikolog ->
+            PsikologItem(psikolog = psikolog)
+    }
     }
 }

@@ -3,9 +3,9 @@ import androidx.annotation.DrawableRes
 import com.example.test.R
 
 object PsikologSource {
-    val dummyFood = listOf(
-        Psikolog("sate", "madura", 10000, R.drawable.gambar1),
-        Psikolog("rendang", "padang", 15000, R.drawable.gambar2),
-        Psikolog("nasgor", "betawi", 10000, R.drawable.gambar3)
+    val dataDiri = listOf(
+        Psikolog("Ramdhan Wardani", "Piskolog ahli", 150000, R.drawable.gambar1),
+        Psikolog("Hamidah", "Psikolog Terlisensi", 200000, R.drawable.gambar2),
+        Psikolog("Pauldron", "Psikolog berpengalaman", 190000, R.drawable.gambar3)
     )
 }
