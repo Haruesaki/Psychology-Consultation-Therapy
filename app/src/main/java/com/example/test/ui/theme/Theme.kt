@@ -10,6 +10,13 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+private val AppColorScheme = lightColorScheme(
+    primary = OrangePrimary,
+    secondary = OrangeSecondary,
+    background = CreamBackground,
+    surface = CardSurface,
+    onPrimary = OnPrimaryText
+)
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -51,7 +58,7 @@ fun TestTheme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = AppColorScheme,
         typography = Typography,
         content = content
     )
